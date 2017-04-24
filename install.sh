@@ -2,7 +2,7 @@
 set -e
 
 BIN_NAME=openstack-docker-driver
-DRIVER_URL="https://github.com/mvollman/openstack-docker-driver/releases/download/v0.1.0/openstack-docker-driver"
+DRIVER_URL="https://github.com/mvollman/openstack-docker-driver/releases/download/v0.1.1/openstack-docker-driver"
 BIN_DIR="/usr/bin"
 
 do_upstart() {

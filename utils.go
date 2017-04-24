@@ -10,14 +10,13 @@ import (
 )
 
 func check(e error) {
-    if e != nil {
-        panic(e)
-    }
+	if e != nil {
+		panic(e)
+	}
 }
 
 func waitForPathToExist(fileName string, numTries int) bool {
 	log.Info("Waiting for path")
-        exec.Command("partprobe")
 	for i := 0; i < numTries; i++ {
 		_, err := os.Stat(fileName)
 		if err == nil {
@@ -28,6 +27,8 @@ func waitForPathToExist(fileName string, numTries int) bool {
 			return false
 		}
 		time.Sleep(time.Second)
+		out, err := exec.Command("partprobe").CombinedOutput()
+		log.Debug("Result of partprobe cmd: ", string(out))
 	}
 	return false
 }
@@ -83,8 +84,8 @@ func Umount(mountpoint string) error {
 			log.Debug("Ignore request for unmount on unmounted volume")
 			err = errors.New("Volume is not mounted")
 		} else {
-                        return err
-                }
+			return err
+		}
 	}
 	out, err = exec.Command("rmdir", mountpoint).CombinedOutput()
 	if err != nil {
@@ -96,4 +97,3 @@ func Umount(mountpoint string) error {
 	}
 	return err
 }
-
