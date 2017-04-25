@@ -2,7 +2,7 @@
 set -e
 
 BIN_NAME=openstack-docker-driver
-DRIVER_URL="https://github.com/mvollman/openstack-docker-driver/releases/download/v0.1.1/openstack-docker-driver"
+DRIVER_URL="https://github.com/mvollman/openstack-docker-driver/releases/download/v0.2.0/openstack-docker-driver"
 BIN_DIR="/usr/bin"
 
 do_upstart() {
@@ -78,6 +78,7 @@ cat << EOFENV > $config_path
 # Driver Options
 #MountPoint=/var/lib/$BIN_NAME
 #FSType=ext4
+SWARM_MODE=false
 
 # Openstack Authentication
 OS_REGION_NAME=

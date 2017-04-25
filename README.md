@@ -30,7 +30,7 @@ source openrc
 
 Edit /etc/sysconfig/openstack-docker-driver or /etc/default/openstack-docker-driver and setup your Openstack authentication
 
-Set the options below:
+Set the required options:
 ```
 OS_REGION_NAME=
 OS_USERNAME=
@@ -40,6 +40,8 @@ OS_PROJECT_NAME=
 OS_TENANT_NAME=
 OS_TENANT_ID=
 ```
+
+Optional option `SWARM_MODE=true` tells the driver to detach a volume that is in-use when a mount request comes in.  This is assuming that the node with the attached volume has failed and we want to detach to start the docker on a new node.
 
 Then start the driver:
 
